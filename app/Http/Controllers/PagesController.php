@@ -28,4 +28,5 @@ class PagesController extends Controller
     public function category4(){
         return view('layouts.components.category4');
     }
+  
 }

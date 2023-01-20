@@ -128,6 +128,9 @@
                 <div class="mg_logo"><img src="{{ Vite::asset('resources/assets/images/logo2.png') }}" alt=""></div>
             </div>
             <div class="main-register tabs-act fl-wrap">
+                @guest
+
+                @if(Route::has('login') && Route::has('register'))
                 <ul class="tabs-menu">
                     <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> Login</a></li>
                     <li><a href="#tab-2"><i class="fal fa-user-plus"></i> Register</a></li>
@@ -137,7 +140,6 @@
                 <div id="tabs-container">
                     <div class="tab">
                         <!--tab -->
-                        @guest
                         <div id="tab-1" class="tab-content first-tab">
                         @if (Route::has('login'))
                             <div class="custom-form">
@@ -193,10 +195,12 @@
                                     </form>
                                 </div>
                                 @endif
+
                             </div>
                         </div>
                         <!--tab end -->
-                        @endguest
+
+                        @endif
                     </div>
                     <!--tabs end -->
                     <div class="log-separator fl-wrap"><span>or</span></div>
@@ -205,6 +209,23 @@
                         <a href="#"><i class="fab fa-facebook-f"></i>Connect with Facebook</a>
                     </div>
                 </div>
+                 @else
+                 <div id="tabs-container">
+                   <div class="log-separator fl-wrap"><span>
+                     <a class="dropdown-item btn btn-danger " href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();" style="color:#fff;">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </span></div>
+                    <div class="soc-log  fl-wrap">
+                        <p>For faster login or register use your social account.</p>
+                        <a href="#"><i class="fab fa-facebook-f"></i>Connect with Facebook</a>
+                    </div>
+                 @endguest
             </div>
         </div>
     </div>
@@ -224,7 +245,6 @@
         var email = $('.email').val();
         var password = $('.password').val();
         var uCpassword= $('.uCpassword').val();
-
         if (name == '') {
             $("#errorMessage").fadeIn().text("Please Provide Your FullName.");
             $(".fullname").focus();
@@ -284,8 +304,8 @@
           });
           return false;
         }
-        }
-      });
+    }
+    });
 
     //   login validation
      $(document).on("submit", "#handleAjax", function(e) {

@@ -181,6 +181,13 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="main-container fl-wrap fix-container-init">
+                            @if (Auth::check())
+                            <div class="pt-15">
+                                <a href="/blog/create" class="btn btn-secondary">
+                                    Create Post
+                                </a>
+                            </div>
+                            @endif
                             <div class="section-title">
                                 <h2>Lastest World News</h2>
                                 <h4>Don't miss daily news</h4>

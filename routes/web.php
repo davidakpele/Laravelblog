@@ -9,10 +9,6 @@ use App\Http\Controllers\Auth\AuthController;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 // Route::get('/', function () {
@@ -28,8 +24,11 @@ Route::get('/category2', [PagesController::class, 'category2'])->name('category2
 Route::get('/category3', [PagesController::class, 'category3'])->name('category3');
 Route::get('/category4', [PagesController::class, 'category4'])->name('category4');
 
+Route::resource('/blog', PostsController::class);
+
 Route::post('/Login', [AuthController::class, 'Login'])->name('Auth.login');
 Route::post('/Register', [AuthController::class, 'Register'])->name('Auth.Register');
+
 
 // Auth route
 Auth::routes();

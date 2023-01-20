@@ -7,21 +7,10 @@
             <div class="search_btn htact show_search-btn"><i class="far fa-search"></i> <span class="header-tooltip">Search</span></div>
             @guest
                 @if(Route::has('login') && Route::has('register'))
-                   <div class="srf_btn htact show-reg-form"><i class="fal fa-user"></i> <span class="header-tooltip"> Sign In</span></div>
+                   <div class="srf_btn htact show-reg-form"><i class="fal fa-user"></i><span class="header-tooltip"> Sign In</span></div>
                 @endif
                   @else
-                <div class="search_btn htact show_search-btn"><i class="far fa-user" style="color: #e93314"></i> <span class="header-tooltip">
-                    {{ Auth::user()->name }}</span></div>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
+                <div class="srf_btn htact show-reg-form"><i class="far fa-user" style="color: #e93314;font-weight:bold;text-transform: capitalize;"><br/>{{ Auth::user()->name }}</i></div>
             @endguest
             <!-- header-search-wrap -->
             <div class="header-search-wrap novis_sarch">
